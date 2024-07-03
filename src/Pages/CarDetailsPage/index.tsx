@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import CarDetails from "../CarDetails";
+import CarDetails from "../../components/CarDetails";
 
 import { Container, HeaderWrapper, Logo } from "./styles";
 
 interface CarData {
   [key: string]: {
-    imageSrc: string;
+    imageSrc: string[];
     title: string;
     info1: JSX.Element;
     info2: JSX.Element;
@@ -16,8 +16,11 @@ interface CarData {
 
 const carData: CarData = {
   "model-s": {
-    imageSrc:
+    imageSrc: [
       "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Mega-Menu-Vehicles-Model-S.png",
+      "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTS18,$PN01,$WS91,$IBE00&view=SIDE&model=ms&size=1920&bkba_opt=2&crop=0,0,0,0&",
+      "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTS18,$PN01,$WS91,$IBE00&view=REAR34&model=ms&size=1920&bkba_opt=2&crop=0,0,0,0&",
+    ],
     title: "Model S",
     info1: (
       <>
@@ -46,8 +49,11 @@ const carData: CarData = {
     ),
   },
   "model-3": {
-    imageSrc:
+    imageSrc: [
       "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Mega-Menu-Vehicles-Model-3.png",
+      "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTS18,$PN01,$WS91,$IBE00&view=SIDE&model=ms&size=1920&bkba_opt=2&crop=0,0,0,0&",
+      "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTS18,$PN01,$WS91,$IBE00&view=REAR34&model=ms&size=1920&bkba_opt=2&crop=0,0,0,0&",
+    ],
     title: "Model 3",
     info1: (
       <>
@@ -76,8 +82,11 @@ const carData: CarData = {
     ),
   },
   "model-x": {
-    imageSrc:
+    imageSrc: [
       "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Mega-Menu-Vehicles-Model-X.png",
+      "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTS18,$PN01,$WS91,$IBE00&view=SIDE&model=ms&size=1920&bkba_opt=2&crop=0,0,0,0&",
+      "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTS18,$PN01,$WS91,$IBE00&view=REAR34&model=ms&size=1920&bkba_opt=2&crop=0,0,0,0&",
+    ],
     title: "Model X",
     info1: (
       <>
@@ -106,8 +115,11 @@ const carData: CarData = {
     ),
   },
   "model-y": {
-    imageSrc:
+    imageSrc: [
       "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Mega-Menu-Vehicles-Model-Y.png",
+      "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTS18,$PN01,$WS91,$IBE00&view=SIDE&model=ms&size=1920&bkba_opt=2&crop=0,0,0,0&",
+      "https://static-assets.tesla.com/configurator/compositor?context=design_studio_2&options=$MTS18,$PN01,$WS91,$IBE00&view=REAR34&model=ms&size=1920&bkba_opt=2&crop=0,0,0,0&",
+    ],
     title: "Model Y",
     info1: (
       <>
@@ -149,7 +161,7 @@ const CarDetailsPage: React.FC = () => {
   return (
     <Container>
       <HeaderWrapper>
-        <Logo href="/"> LOGO </Logo>
+        <Logo href="/Home"> LOGO </Logo>
       </HeaderWrapper>
       <CarDetails
         imageSrc={car.imageSrc}

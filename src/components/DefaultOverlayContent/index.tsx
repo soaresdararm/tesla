@@ -1,13 +1,18 @@
-import React from 'react'
+import React from "react";
 
-import { Container, Heading, Buttons } from './styles'
+import { Buttons, Container, Heading } from "./styles";
 
 interface Props {
-  label: string
-  description: string
+  label: string;
+  description: string;
+  onClink: any;
 }
 
-const DefaultOverlayContent: React.FC<Props> = ({ label, description }) => {
+const DefaultOverlayContent: React.FC<Props> = ({
+  label,
+  description,
+  onClink,
+}) => {
   return (
     <Container>
       <Heading>
@@ -16,11 +21,11 @@ const DefaultOverlayContent: React.FC<Props> = ({ label, description }) => {
       </Heading>
 
       <Buttons>
-        <button>Custom Order</button>
+        <button onClick={onClink}>Custom Order</button>
         <button className="white">Existing Inventory</button>
       </Buttons>
     </Container>
-  )
-}
+  );
+};
 
-export default DefaultOverlayContent
+export default DefaultOverlayContent;

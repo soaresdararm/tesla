@@ -10,10 +10,16 @@ import {
   OptionsContainer,
   Option,
   Info,
+  NavigationButton,
 } from "./styles";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
+
 interface CarDetailsProps {
-  imageSrc: string;
+  imageSrc: string[];
   title: string;
   info1: JSX.Element;
   info2: JSX.Element;
@@ -28,6 +34,8 @@ const CarDetails: React.FC<CarDetailsProps> = ({
   info3,
 }) => {
   const [activeTab, setActiveTab] = useState<"comprar" | "alugar">("comprar");
+  const [showNavigation, setShowNavigation] = useState(false);
+  let sliderRef: Slider | null = null;
 
   const handleTabClick = (tab: "comprar" | "alugar") => {
     setActiveTab(tab);
@@ -38,10 +46,51 @@ const CarDetails: React.FC<CarDetailsProps> = ({
     alugar: ["Opção de Aluguel 1", "Opção de Aluguel 2"],
   };
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
+
+  const handleMouseEnter = () => {
+    setShowNavigation(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowNavigation(false);
+  };
   return (
     <Container>
-      <ImageSection>
-        <img src={imageSrc} alt={title} />
+      <ImageSection
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {showNavigation && (
+          <>
+            <NavigationButton
+              onClick={() => sliderRef?.slickPrev()}
+              position="left"
+            >
+              &#10094;
+            </NavigationButton>
+            <NavigationButton
+              onClick={() => sliderRef?.slickNext()}
+              position="right"
+            >
+              &#10095;
+            </NavigationButton>
+          </>
+        )}
+        <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
+          {imageSrc.map((src, index) => (
+            <div key={index}>
+              <img src={src} alt={`${title} image ${index + 1}`} />
+            </div>
+          ))}
+        </Slider>
       </ImageSection>
       <DetailsSection>
         <Title>{title}</Title>

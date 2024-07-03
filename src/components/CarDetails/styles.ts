@@ -3,14 +3,19 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%;
-  height: 100%;
+  margin-top: 20px;
+
+  @media (max-width: 840px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const ImageSection = styled.div`
+  position: relative;
   width: 70%;
-  padding-top: 5%;
+  padding-top: 1%;
   img {
     width: 100%;
     height: 100%;
@@ -20,9 +25,14 @@ export const ImageSection = styled.div`
 
 export const DetailsSection = styled.div`
   width: 30%;
-  padding: 20px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 900px) {
+    padding-top: 20px;
+    width: 80%;
+  }
 `;
 
 export const Title = styled.h1`
@@ -85,5 +95,22 @@ export const Option = styled.div`
 
   &:hover {
     background-color: #f1f1f1;
+  }
+`;
+
+export const NavigationButton = styled.button<{ position: "left" | "right" }>`
+  position: absolute;
+  top: 50%;
+  ${(props) => (props.position === "left" ? "left: 10px;" : "right: 10px;")}
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
   }
 `;
