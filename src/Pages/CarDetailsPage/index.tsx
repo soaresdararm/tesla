@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import CarDetails from "../../components/CarDetails";
 
 import { Container, HeaderWrapper, Logo } from "./styles";
+import CarDetails from "../../components/CarDetails";
 
 interface CarData {
   [key: string]: {

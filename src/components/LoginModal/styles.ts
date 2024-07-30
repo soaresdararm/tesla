@@ -19,13 +19,13 @@ export const ModalContent = styled.div`
   border-radius: 8px;
   position: relative;
   width: 400px;
-  height: 320px;
+  height: 340px;
 `;
 
 export const CloseButton = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 25px;
+  right: 30px;
   background: none;
   border: none;
   font-size: 1.5rem;
@@ -35,12 +35,14 @@ export const CloseButton = styled.button`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  gap: 12px;
 `;
 
 export const FormGroup = styled.div`
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 4px;
 `;
 
 export const Label = styled.label`
@@ -74,6 +76,7 @@ export const Link = styled.a`
   text-align: center;
   color: #007bff;
   cursor: pointer;
+  text-decoration: none;
 
   &:hover {
     text-decoration: underline;
