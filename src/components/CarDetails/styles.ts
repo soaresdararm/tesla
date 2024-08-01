@@ -114,3 +114,31 @@ export const NavigationButton = styled.button<{ position: "left" | "right" }>`
     background: rgba(0, 0, 0, 0.7);
   }
 `;
+
+export const Buttons = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
+
+  > button {
+    background: #f4f4f4;
+    color: #393c41;
+    opacity: 0.8;
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+
+    padding: 13px 40px;
+    border: none;
+    outline: 0;
+    cursor: pointer;
+
+    & + button {
+      margin: 10px 0 0;
+    }
+  }
+`;

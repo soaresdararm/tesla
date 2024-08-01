@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
-`
+`;
 
 export const Heading = styled.div`
   margin-top: 16.5vh;
@@ -25,7 +25,7 @@ export const Heading = styled.div`
     line-height: 20px;
     color: #5c5e62;
   }
-`
+`;
 
 export const Buttons = styled.div`
   display: flex;
@@ -70,4 +70,4 @@ export const Buttons = styled.div`
       margin: 0 0 0 10px;
     }
   }
-`
+`;

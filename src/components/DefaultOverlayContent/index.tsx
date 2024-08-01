@@ -21,8 +21,7 @@ const DefaultOverlayContent: React.FC<Props> = ({
       </Heading>
 
       <Buttons>
-        <button onClick={onClink}>Custom Order</button>
-        <button className="white">Existing Inventory</button>
+        <button onClick={onClink}>Peça agora</button>
       </Buttons>
     </Container>
   );

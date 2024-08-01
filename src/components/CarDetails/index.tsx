@@ -11,12 +11,13 @@ import {
   Option,
   Info,
   NavigationButton,
+  Buttons,
 } from "./styles";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-
+import { Box, Button, IconButton, Modal, Typography } from "@mui/material";
 
 interface CarDetailsProps {
   imageSrc: string[];
@@ -35,6 +36,8 @@ const CarDetails: React.FC<CarDetailsProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<"comprar" | "alugar">("comprar");
   const [showNavigation, setShowNavigation] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+
   let sliderRef: Slider | null = null;
 
   const handleTabClick = (tab: "comprar" | "alugar") => {
@@ -62,6 +65,10 @@ const CarDetails: React.FC<CarDetailsProps> = ({
   const handleMouseLeave = () => {
     setShowNavigation(false);
   };
+
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
+
   return (
     <Container>
       <ImageSection
@@ -118,7 +125,73 @@ const CarDetails: React.FC<CarDetailsProps> = ({
             <Option key={option}>{option}</Option>
           ))}
         </OptionsContainer>
+
+        <Buttons>
+          <Button onClick={handleOpenModal}>Detalhes do recurso</Button>
+        </Buttons>
       </DetailsSection>
+
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 750,
+            bgcolor: "background.paper",
+            boxShadow: 24,
+            borderRadius: 2,
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+          }}
+        >
+          <div>
+            <img
+              src={
+                "https://digitalassets.tesla.com/co1n/image/upload/f_auto,q_auto/prod/static_assets/MODEL3_/A01_Model-3-Upgraded.jpeg?"
+              }
+              alt={""}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderTopLeftRadius: 8,
+                borderBottomLeftRadius: 8,
+              }}
+            />
+          </div>
+          <div
+            style={{
+              margin: 10,
+              gap: 8,
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <IconButton
+              onClick={handleCloseModal}
+              sx={{ position: "absolute", right: 8, top: 8 }}
+            >
+              x
+            </IconButton>
+            <div style={{ paddingTop: 25 }}>
+              <Typography id="modal-subtitle" variant="h6" component="h2">
+                Detalhes do recurso
+              </Typography>
+              <Typography id="modal-description" sx={{ mt: 1, fontSize: 12 }}>
+                Refinado com mais alcance, um interior premium totalmente novo e
+                um passeio visivelmente mais silencioso.
+              </Typography>
+            </div>
+          </div>
+        </Box>
+      </Modal>
     </Container>
   );
 };
